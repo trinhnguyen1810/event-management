@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employees</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <h2> Add Event</h2>
+    <hr/>
+    <form th:action="@{/saveEvent}" th:object="${event}" method="POST">
+        <label for="eventName">Name:</label>
+        <span style="color: red;">*</span>
+        <input type="text" th:value="${event.eventName}" id="eventName" name="eventName" required="true" placeholder="Enter name of the event" class="form-control col-4 mb-4" />
+        <label for="dateEvent">Date Event:</label>
+        <span style="color: red;">*</span>
+        <input type="date" th:value="${#dates.format(event.dateEvent, 'dd-MM-yyyy')}" id="dateEvent" name="dateEvent" required="true"  class="form-control col-4 mb-4" />
+        <label for="timeEvent">Time Event:</label>
+        <span style="color: red;">*</span>
+        <input type="time" th:value="${event.timeEvent}" name="timeEvent" id="timeEvent" required="true"  class="form-control col-4 mb-4" />
+        <label for="location">Location Event:</label>
+        <span style="color: red;">*</span>
+        <input type="text" th:value="${event.location}" name="location" id="location" required="true" placeholder="Enter location of the event" class="form-control col-4 mb-4" />
+        <label for="location">Location Organizer:</label>
+        <span style="color: red;">*</span>
+        <input type="text" th:value="${event.organizer}" name="organizer" id="organizer" required="true"  placeholder="Enter organizer" class="form-control col-4 mb-4" />
+        <label for="urlLink">URL Link:</label>
+        <input type="text" th:value="${event.urlLink}" name="urlLink" id="urlLink" placeholder="Enter url link" class="form-control col-4 mb-4" />
+        <label for="description">Event description:</label>
+        <br>
+        <textarea style="width: 70%;" id="description" name="description" maxlength="4000" placeholder="Enter description of event" rows="10"></textarea>
+        <div>
+        <button class="btn btn-primary" type="submit"> Save </button>
+        </div>
+        <input type="hidden" th:field="${event.id}"/>
+    </form>
+    <hr/>
+    <a th:href="@{/showEvents}"> Back to list </a>
+</div>
+</body>
+</html>

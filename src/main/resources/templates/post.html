@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events Newsfeed</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/styles.css}">
+</head>
+<body>
+<main>
+    <div class="settings">
+        <button class="setting-button"> Log out </button>
+    </div>
+    <div class ="header-event-board">
+        <h1 th:text="${event.eventName}"> </h1>
+        <div class ="host-tag"> <b th:text="${'Hosted by ' + event.organizer}"></b> </div>
+
+    </div>
+    <div class="event-post-containter">
+        <div class="info-container">
+            <div class="image-container">
+                <img src="../static/images/event.jpg" width="740"
+                     th:src="@{images/event.jpg}"/>
+            </div>
+            <div class="basic-info">
+                <p class="event-date"> <i class="far fa-calendar-alt"></i> <span th:text="${#dates.format(event.dateEvent, 'dd-MM-yyyy')}"> </span> </p>
+                <div class="seperator"> </div>
+                <p class="event-location" >
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span th:text="${event.location}">Location</span>
+                </p>
+                <p> <span th:text="${event.urlLink} ?: 'None'"></span>
+                </p>
+                <div class="rsvp-button-container"> <button class="rsvp-button"> RSVP </button></div>
+                <div class="seperator"> </div>
+            </div>
+            <div class="additional-container">
+                <div class ="description-wrapper">
+                    <b style="color:#606060; font-size: 25px;"> Details</b>
+                    <p> <span th:text="${event.description}" style='white-space:pre'></span>
+                    </p>
+                </div>
+                <div class="tags">
+                    <button class="tags-button"> Event </button>
+                    <button class="tags-button"> Party </button>
+                    <button class="tags-button"> Idk honestly </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+

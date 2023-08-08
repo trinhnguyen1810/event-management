@@ -1,0 +1,11 @@
+server:
+  port:8080
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/eventdb
+    password: Nnptnnpt2002,
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update

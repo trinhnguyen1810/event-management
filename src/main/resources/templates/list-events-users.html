@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> events </title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<main>
+    <div class="settings">
+        <button class="setting-button"> Log out </button>
+    <div class ="header-event-board">
+        <h1> Welcome to Event Newsfeed </h1>
+    </div>
+    <div class="classify-containter">
+        <div class="type">
+            <button class="button-event-type"> All Events </button>
+            <button class="button-event-type"> Past Events </button>
+            <button class="button-event-type"> Upcoming Events </button>
+        </div>
+        <div class ="event-board">
+            <div class="event-container" th:each="event : ${events}">
+                <div class="image-container">
+                    <img src="../static/images/event.jpg" width="100%" height="160"
+                         th:src="@{images/event.jpg}"/>
+                </div>
+                <div class="content-container">
+                    <p class="event-name"> <a th:href="@{/eventPost(eventId=${event.id})}"> <b th:text="${event.eventName}"></b></a></p>
+                    <div class="seperator"> </div>
+                    <p class="event-date"> <i class="far fa-calendar-alt"></i> <span th:text="${#dates.format(event.dateEvent, 'dd-MM-yyyy')}"></span></p>
+                    <div class="seperator"> </div>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span th:text="${event.location}"></span>
+                    </p>
+                    <div class="seperator"> </div>
+                    <div class="tags">
+                        <div class="category"> <!-- Add logic here to display event categories --> </div>
+                    </div>
+                    <div class="additional-info">
+                        <div class="description-wrapper"> <p th:text="${event.description}"></p> </div>
+                    </div>
+                    <div class="post-container">
+                        <button class="rsvp-button"> RSVP </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+</body>
+
+</html>
