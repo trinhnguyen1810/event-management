@@ -11,7 +11,7 @@
 <div class="container">
     <h2> Add Event</h2>
     <hr/>
-    <form th:action="@{/saveEvent}" th:object="${event}" method="POST">
+    <form th:action="@{/saveEvent}" th:object="${event}" method="POST" enctype="multipart/form-data">
         <label for="eventName">Name:</label>
         <span style="color: red;">*</span>
         <input type="text" th:value="${event.eventName}" id="eventName" name="eventName" required="true" placeholder="Enter name of the event" class="form-control col-4 mb-4" />
@@ -32,6 +32,9 @@
         <label for="description">Event description:</label>
         <br>
         <textarea style="width: 70%;" id="description" name="description" maxlength="4000" placeholder="Enter description of event" rows="10"></textarea>
+        <br>
+        <label> Upload photos:   </label>
+        <input type="file" name="image" accept="image/png, image/jpeg" />
         <div>
         <button class="btn btn-primary" type="submit"> Save </button>
         </div>

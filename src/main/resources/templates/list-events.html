@@ -29,8 +29,13 @@
     <div class ="event-board">
       <div class="event-container" th:each="event : ${events}">
         <div class="image-container">
-          <img src="../static/images/event.jpg" width="100%" height="160"
-               th:src="@{images/event.jpg}"/>
+          <img th:if="${event.photosImagePath != null}"
+               th:src="@{${event.photosImagePath}}"
+               width="100%" height="160" />
+          <img th:unless="${event.photosImagePath != null}"
+               src="../static/images/event.jpg"
+               width="100%" height="160"
+               th:src="@{images/event.jpg}" />
         </div>
         <div class="content-container">
           <p class="event-name"> <a th:href="@{/eventPost(eventId=${event.id})}"> <b th:text="${event.eventName}"></b></a></p>

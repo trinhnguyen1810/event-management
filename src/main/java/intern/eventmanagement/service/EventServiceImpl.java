@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import intern.eventmanagement.entity.Event;
 import intern.eventmanagement.repository.EventRepository;
-import intern.eventmanagement.service.EventService;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,7 +58,9 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void saveEvent(Event event) {
+    public void saveEvent(Event event, MultipartFile multipartFile) throws IOException {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        event.setPhoto(fileName);
         eventRepository.save(event);
     }
 

@@ -21,8 +21,13 @@
     <div class="event-post-containter">
         <div class="info-container">
             <div class="image-container">
-                <img src="../static/images/event.jpg" width="740"
-                     th:src="@{images/event.jpg}"/>
+                <img th:if="${event.photosImagePath != null}"
+                     th:src="@{${event.photosImagePath}}"
+                     width="740" />
+                <img th:unless="${event.photosImagePath != null}"
+                     src="../static/images/event.jpg"
+                     width="740"
+                     th:src="@{images/event.jpg}" />
             </div>
             <div class="basic-info">
                 <p class="event-date"> <i class="far fa-calendar-alt"></i> <span th:text="${#dates.format(event.dateEvent, 'dd-MM-yyyy')}"> </span> </p>

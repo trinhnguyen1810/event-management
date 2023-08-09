@@ -47,23 +47,31 @@ public class Event {
     @Column(nullable = false)
     private String organizer;
 
+    @Column(nullable = true, length = 64)
+    private String photo;
+
     @Column(length = 4000,nullable=false)
     private String description;
 
     @ManyToMany
     private Set<User> attendees = new HashSet<>();
 
+    @Transient
+    private String photosImagePath;
+
     public Event(String eventName, Date dateEvent, String timeEvent, String location,
-                 Set<String> categories, String urlLink, String organizer, String description) {
+                 Set<String> categories, String photo, String urlLink, String organizer, String description) {
         this.eventName = eventName;
         this.timeEvent = timeEvent;
         this.dateEvent = dateEvent;
         this.dateCreate = this.setDateCreate();
         this.location = location;
         this.categories = categories;
+        this.photo = photo;
         this.urlLink = urlLink;
         this.organizer = organizer;
         this.description = description;
+        this.photosImagePath = getPhotosImagePath();
     }
 
     public enum EventStatus {
@@ -89,6 +97,12 @@ public class Event {
             eventStatus = EventStatus.PAST;
         }
     }
+    @Transient
+    public String getPhotosImagePath() {
+        if (photo == null || id == null) return null;
+
+        return "event-photo/" + id + "/" + this.photo;
+    }
 
     public EventStatus getEventStatus() {
         return eventStatus;
@@ -107,6 +121,15 @@ public class Event {
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
+    }
+
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Date getDateEvent() {
