@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    h1 { text-align: center;
+        background: linear-gradient(to right, #37306B, #5D9C59);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 48px;
+        font-weight: bold;
+        margin: 15px;
+        padding: 5px;}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -7,8 +18,12 @@
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{css/stylesheet.css}">
 </head>
 <body>
+<div>
+    <h1> Welcome to Event Management System </h1>
+</div>
 <div class="container mt-5">
     <div class="card mx-auto" style="max-width: 400px;">
         <div class="card-body">
