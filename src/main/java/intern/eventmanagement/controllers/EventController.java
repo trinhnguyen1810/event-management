@@ -1,14 +1,16 @@
 package intern.eventmanagement.controllers;
 
+import intern.eventmanagement.entity.Event;
+import intern.eventmanagement.service.EventService;
 import intern.eventmanagement.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import intern.eventmanagement.entity.Event;
-import intern.eventmanagement.service.EventService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +20,11 @@ public class EventController {
 
     @Autowired
     private EventService eventService;
+
+    @GetMapping({"/home","/"})
+    public String showHome(){
+        return "home";
+    }
 
     @GetMapping(value = { "/showEvents" })
     public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {

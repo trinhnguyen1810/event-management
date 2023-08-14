@@ -1,4 +1,44 @@
 package intern.eventmanagement.controllers;
 
-public class RegistrationController {
-}
+import intern.eventmanagement.entity.UserDto;
+import intern.eventmanagement.service.RegistrationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+    @Controller
+    public class RegistrationController {
+        @Autowired
+        private RegistrationService registrationService;
+
+        @Autowired
+        private PasswordEncoder passwordEncoder;
+
+        @GetMapping("/register")
+        public String showRegistrationForm(Model model){
+            UserDto user = new UserDto();
+            model.addAttribute("userDto", user);
+            return "register";
+        }
+
+        @PostMapping("/register")
+        public String registerUser(
+                @ModelAttribute("userDto") UserDto userDto,
+                BindingResult result,
+                Model model
+        ) {
+            registrationService.processRegistration(userDto, result, model);
+            return "register";
+        }
+    }
+
+
+
+
+
+
+
