@@ -637,3 +637,68 @@ This generated password is for development use only. Your security configuration
 2023-08-14 10:10:55.723  INFO 2548 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-08-14 10:10:55.745  INFO 2548 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-08-14 10:10:55.778  INFO 2548 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-14 14:15:03.933  INFO 4605 --- [restartedMain] i.e.EventManagementApplication           : Starting EventManagementApplication using Java 20.0.1 on Vivians-MacBook-Air.local with PID 4605 (/Users/viviannguyen/Downloads/event-management/target/classes started by viviannguyen in /Users/viviannguyen/Downloads/event-management)
+2023-08-14 14:15:03.934  INFO 4605 --- [restartedMain] i.e.EventManagementApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-08-14 14:15:03.996  INFO 4605 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-14 14:15:03.996  INFO 4605 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-14 14:15:04.502  INFO 4605 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-14 14:15:04.543  INFO 4605 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2023-08-14 14:15:05.056  INFO 4605 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-08-14 14:15:05.067  INFO 4605 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-08-14 14:15:05.067  INFO 4605 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-08-14 14:15:05.129  INFO 4605 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-08-14 14:15:05.129  INFO 4605 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1132 ms
+2023-08-14 14:15:05.288  INFO 4605 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-14 14:15:05.332  INFO 4605 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-14 14:15:05.442  INFO 4605 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-14 14:15:05.521  INFO 4605 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-14 14:15:05.525  WARN 4605 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-08-14 14:15:05.881  INFO 4605 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-14 14:15:05.902  INFO 4605 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-08-14 14:15:06.448  INFO 4605 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-14 14:15:06.454  INFO 4605 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-14 14:15:06.482  WARN 4605 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-14 14:15:06.741  WARN 4605 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 63407f9a-266d-4f17-a850-cce93a6fa26d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-08-14 14:15:06.816  INFO 4605 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7669ed9f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@db861e7, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d8f77ba, org.springframework.security.web.header.HeaderWriterFilter@404eaf9c, org.springframework.security.web.csrf.CsrfFilter@32d12928, org.springframework.security.web.authentication.logout.LogoutFilter@3127ea0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7851591d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@12ef2766, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77fde2ae, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4f91a3dd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64d3935e, org.springframework.security.web.session.SessionManagementFilter@f3da647, org.springframework.security.web.access.ExceptionTranslationFilter@2fa5b821, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@265bda7b]
+2023-08-14 14:15:07.075  INFO 4605 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-08-14 14:15:07.100  INFO 4605 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-14 14:15:07.110  INFO 4605 --- [restartedMain] i.e.EventManagementApplication           : Started EventManagementApplication in 3.497 seconds (JVM running for 3.999)
+2023-08-14 14:15:11.237  INFO 4605 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-14 14:15:11.238  INFO 4605 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-08-14 14:15:11.241  INFO 4605 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2023-08-14 14:39:17.798  INFO 4605 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-14 14:39:17.820  INFO 4605 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-14 14:39:17.855  INFO 4605 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-14 14:48:58.801  INFO 5006 --- [restartedMain] i.e.EventManagementApplication           : Starting EventManagementApplication using Java 20.0.1 on Vivians-MacBook-Air.local with PID 5006 (/Users/viviannguyen/Downloads/event-management/target/classes started by viviannguyen in /Users/viviannguyen/Downloads/event-management)
+2023-08-14 14:48:58.803  INFO 5006 --- [restartedMain] i.e.EventManagementApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-08-14 14:48:58.861  INFO 5006 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-14 14:48:58.862  INFO 5006 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-14 14:48:59.433  INFO 5006 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-14 14:48:59.487  INFO 5006 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 3 JPA repository interfaces.
+2023-08-14 14:49:00.122  INFO 5006 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-08-14 14:49:00.131  INFO 5006 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-08-14 14:49:00.131  INFO 5006 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-08-14 14:49:00.188  INFO 5006 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-08-14 14:49:00.188  INFO 5006 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1326 ms
+2023-08-14 14:49:00.408  INFO 5006 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-14 14:49:00.461  INFO 5006 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-14 14:49:00.605  INFO 5006 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-14 14:49:00.708  INFO 5006 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-14 14:49:00.714  WARN 5006 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-08-14 14:49:01.188  INFO 5006 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-14 14:49:01.220  INFO 5006 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-08-14 14:49:02.212  INFO 5006 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-14 14:49:02.220  INFO 5006 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-14 14:49:02.264  WARN 5006 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-14 14:49:02.919  INFO 5006 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@138d2cb5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39765d68, org.springframework.security.web.context.SecurityContextPersistenceFilter@4992a5b4, org.springframework.security.web.header.HeaderWriterFilter@1c52f837, org.springframework.security.web.csrf.CsrfFilter@6c3061ce, org.springframework.security.web.authentication.logout.LogoutFilter@4c677ab4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1f6d4537, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19fbfda7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1add28db, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@229f29fc, org.springframework.security.web.session.SessionManagementFilter@64480bae, org.springframework.security.web.access.ExceptionTranslationFilter@519c9270, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@398696c8]
+2023-08-14 14:49:03.316  INFO 5006 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-08-14 14:49:03.347  INFO 5006 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-14 14:49:03.362  INFO 5006 --- [restartedMain] i.e.EventManagementApplication           : Started EventManagementApplication in 4.952 seconds (JVM running for 5.72)
+2023-08-14 14:49:19.168  INFO 5006 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-14 14:49:19.169  INFO 5006 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-08-14 14:49:19.172  INFO 5006 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
