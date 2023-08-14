@@ -8,12 +8,17 @@
 <body>
 <main>
   <div class="settings">
-    <button class="setting-button"> Log out </button>
+    <div>
+      <form th:action="@{/logout}" method="post">
+        <button class="setting-button" type="submit">Log out</button>
+      </form>
+    </div>
+    <div>
     <div> <a th:href="@{/addEventForm}">
       <button class="add-button"> + Add Event </button> </a> </div>
   </div>
   <div class ="header-event-board">
-    <h1> Admin Newsfeed </h1>
+    <h1> Welcome to <b> [[${#request.userPrincipal.principal.fullName}]]</b>'s Event Board </h1>
   </div>
   <div class="classify-containter">
     <div class="type">
@@ -66,6 +71,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </main>
 </body>
