@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthController {
 
-    @GetMapping("/login")
+    @GetMapping({"/","/login"})
     public String showLoginForm(Model model) {
         model.addAttribute("user", new User());
         return "login";

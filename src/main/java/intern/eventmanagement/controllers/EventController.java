@@ -20,12 +20,6 @@ public class EventController {
 
     @Autowired
     private EventService eventService;
-
-    @GetMapping({"/home","/"})
-    public String showHome(){
-        return "home";
-    }
-
     @GetMapping(value = { "/showEvents" })
     public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {
         ModelAndView mav = new ModelAndView("list-events");
