@@ -40,22 +40,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/login", "/register").permitAll()
+                .antMatchers("/addEventForm", "/saveEvent", "/showUpdateEvent", "/deleteEvent").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                    .usernameParameter("email")
-                    .defaultSuccessUrl("/showEvents")
-                    .permitAll()
+                .usernameParameter("email")
+                .defaultSuccessUrl("/showEvents")
+                .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
-
     }
+
+
 
 
 

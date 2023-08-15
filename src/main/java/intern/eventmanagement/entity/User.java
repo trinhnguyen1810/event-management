@@ -4,8 +4,8 @@ package intern.eventmanagement.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -88,29 +88,19 @@ public class User {
         this.tokenExpired = tokenExpired;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
-    public boolean hasRole(String roleName) {
-        Iterator<Role> iterator = this.roles.iterator();
-        while (iterator.hasNext()) {
-            Role role = iterator.next();
-            if (role.getName().equals(roleName)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
 
 
 
 
-}
+

@@ -3,11 +3,14 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table(name = "roles")
+
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
 
     public Long getId() {
         return id;
@@ -25,7 +28,6 @@ public class Role {
         this.name = name;
     }
 
-    private String name;
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 
