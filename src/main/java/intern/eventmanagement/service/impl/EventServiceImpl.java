@@ -1,12 +1,13 @@
-package intern.eventmanagement.service;
+package intern.eventmanagement.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import intern.eventmanagement.entity.Event;
 import intern.eventmanagement.repository.EventRepository;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import intern.eventmanagement.service.EventService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;

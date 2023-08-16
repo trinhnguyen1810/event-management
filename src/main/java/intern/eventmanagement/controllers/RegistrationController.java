@@ -1,9 +1,8 @@
 package intern.eventmanagement.controllers;
 
-import intern.eventmanagement.entity.UserDto;
 import intern.eventmanagement.service.RegistrationService;
+import intern.eventmanagement.service.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
         @Autowired
         private RegistrationService registrationService;
 
-        @Autowired
-        private PasswordEncoder passwordEncoder;
 
         @GetMapping("/register")
         public String showRegistrationForm(Model model){
