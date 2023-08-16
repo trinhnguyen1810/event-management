@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     url: jdbc:mysql://localhost:3306/eventdb
-    password: Nnptnnpt2002,
+    password:
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
