@@ -51,8 +51,6 @@ public class EventServiceImpl implements EventService {
         events.forEach(Event::updateEventStatus);
         return upcomingEvents;
     }
-
-
     @Override
     public Event getEventById(Long eventId) {
         return eventRepository.findById(eventId).orElse(null);
@@ -64,7 +62,6 @@ public class EventServiceImpl implements EventService {
         event.setPhoto(fileName);
         eventRepository.save(event);
     }
-
     @Override
     public void deleteEventById(Long eventId) {
         eventRepository.deleteById(eventId);
