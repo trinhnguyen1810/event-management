@@ -1,8 +1,11 @@
 package intern.eventmanagement.controllers;
 
 import intern.eventmanagement.entity.Event;
+import intern.eventmanagement.entity.User;
 import intern.eventmanagement.service.EventService;
+import intern.eventmanagement.service.UserService;
 import intern.eventmanagement.util.FileUploadUtil;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,10 @@ public class EventController {
 
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping(value = { "/showEvents" })
     public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {
         ModelAndView mav = new ModelAndView("list-events");
@@ -73,11 +80,13 @@ public class EventController {
     }
 
     @PostMapping("/saveEvent")
-    public String saveEvent(@ModelAttribute Event event, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String saveEvent(@ModelAttribute Event event, @RequestParam("image") MultipartFile multipartFile, Authentication authentication) throws IOException {
         eventService.saveEvent(event,multipartFile);
         String uploadDir = "event-photo/" + event.getId();
         String fileName = event.getPhoto();
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        String email = authentication.getName();
+        User currentUser = userService.findByEmail(String email);
         return "redirect:/showEvents";
     }
 
@@ -91,6 +100,7 @@ public class EventController {
 
     @GetMapping("/deleteEvent")
     public String deleteEvent(@RequestParam Long eventId) {
+
         eventService.deleteEventById(eventId);
         return "redirect:/showEvents";
     }

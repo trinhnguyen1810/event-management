@@ -59,8 +59,14 @@ public class Event {
     @Transient
     private String photosImagePath;
 
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User createdBy;
+
+
+
     public Event(String eventName, Date dateEvent, String timeEvent, String location,
-                 Set<String> categories, String photo, String urlLink, String organizer, String description) {
+                 Set<String> categories, String photo, String urlLink, String organizer, String description, User createdBy) {
         this.eventName = eventName;
         this.timeEvent = timeEvent;
         this.dateEvent = dateEvent;
@@ -72,6 +78,7 @@ public class Event {
         this.organizer = organizer;
         this.description = description;
         this.photosImagePath = getPhotosImagePath();
+        this.createdBy = createdBy;
     }
 
     public enum EventStatus {
