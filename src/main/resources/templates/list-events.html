@@ -24,7 +24,7 @@
   <div class="classify-containter">
     <div class="type">
       <a th:href="@{/showEvents(tag='my')}">
-        <button class="button-event-type">MyEvents</button>
+        <button class="button-event-type">My Events</button>
       </a>
       <a th:href="@{/showEvents}">
       <button class="button-event-type">All Events</button></a>
@@ -67,7 +67,7 @@
           </div>
           <div class="post-container" >
             <a th:href="@{/deleteEvent(eventId=${event.id})}">
-              <button class="post-button" id="delete-button" sec:authorize="hasAuthority('ADMIN')">Delete 0</button>
+              <button class="post-button" id="delete-button" sec:authorize="hasAuthority('ADMIN')">Delete</button>
             </a>
             <button class="rsvp-button" id="rsvp-button" sec:authorize="hasAuthority('USER')"
                     th:attr="data-event-id=${event.id}, data-rsvped=${event.attendees.contains(#authentication.principal)}">
