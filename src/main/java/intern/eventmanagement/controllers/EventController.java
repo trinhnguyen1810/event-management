@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
+import org.springframework.security.core.Authentication;
 
 import java.io.IOException;
 import java.util.List;
@@ -88,10 +91,15 @@ public class EventController {
         mav.addObject("event", event);
         return mav;
     }
-
     @GetMapping("/deleteEvent")
     public String deleteEvent(@RequestParam Long eventId) {
         eventService.deleteEventById(eventId);
         return "redirect:/showEvents";
+    }
+    @GetMapping("/event/{eventId}")
+    public String getEventDetails(@PathVariable Long eventId, Model model, Authentication authentication) {
+        Event event = eventService.getEventById(eventId);
+        model.addAttribute("event", event);
+        return "list-events";
     }
 }

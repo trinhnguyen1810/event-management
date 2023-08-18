@@ -28,13 +28,4 @@ public class DefaultRoleConfig {
         }
     }
 
-    @PostConstruct
-    public void createDefaultRoleAdmin() {
-        Optional<Role> userRole = roleRepository.findByName("ADMIN");
-        if (!userRole.isPresent()) {
-            Role defaultRole = new Role();
-            defaultRole.setName("ADMIN");
-            roleRepository.save(defaultRole);
-        }
-    }
 }

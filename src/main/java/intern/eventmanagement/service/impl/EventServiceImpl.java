@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-
+import intern.eventmanagement.entity.User;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
@@ -51,8 +51,6 @@ public class EventServiceImpl implements EventService {
         events.forEach(Event::updateEventStatus);
         return upcomingEvents;
     }
-
-
     @Override
     public Event getEventById(Long eventId) {
         return eventRepository.findById(eventId).orElse(null);
@@ -64,9 +62,31 @@ public class EventServiceImpl implements EventService {
         event.setPhoto(fileName);
         eventRepository.save(event);
     }
-
     @Override
     public void deleteEventById(Long eventId) {
         eventRepository.deleteById(eventId);
     }
+    @Override
+    public boolean addAttendee(Long eventId, User user) {
+        Event event = eventRepository.findById(eventId).orElse(null);
+        if (event != null) {
+            event.getAttendees().add(user);
+            eventRepository.save(event);
+            return true;
+        }
+        return false;
+    }
+    @Override
+
+    public boolean removeAttendee(Long eventId, User user) {
+        Event event = eventRepository.findById(eventId).orElse(null);
+        if (event != null) {
+            event.getAttendees().remove(user);
+            eventRepository.save(event);
+            return true;
+        }
+        return false;
+    }
+
+
 }

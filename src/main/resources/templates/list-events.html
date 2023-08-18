@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <title> events </title>
   <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
@@ -61,12 +62,19 @@
           <div class="additional-info">
             <div class="description-wrapper"> <p th:text="${event.description}"></p> </div>
           </div>
-          <div class="post-container">
+          <div class="post-container" >
             <a th:href="@{/deleteEvent(eventId=${event.id})}">
-              <button class="post-button" id="delete-button"> Delete </button>
-              </a>
+              <button class="post-button" id="delete-button" sec:authorize="hasAuthority('ADMIN')">Delete 0</button>
+            </a>
+            <button class="rsvp-button" id="rsvp-button" sec:authorize="hasAuthority('USER')"
+                    th:attr="data-event-id=${event.id}, data-rsvped=${event.attendees.contains(#authentication.principal)}">
+              RSVP
+            </button>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="/js/rsvp.js"></script>
+
             <a th:href="@{/showUpdateEvent(eventId=${event.id})}">
-              <button class="post-button" id="edit-button"> Update </button></a>
+              <button class="post-button" id="edit-button" sec:authorize="hasAuthority('ADMIN')"> Update </button></a>
           </div>
         </div>
       </div>

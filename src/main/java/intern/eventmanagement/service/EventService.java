@@ -1,7 +1,7 @@
 package intern.eventmanagement.service;
 
 import intern.eventmanagement.entity.Event;
-import org.springframework.web.bind.annotation.RequestParam;
+import intern.eventmanagement.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -16,6 +16,8 @@ public interface EventService {
     void saveEvent(Event event, MultipartFile multipartFile) throws IOException;
 
     void deleteEventById(Long eventId);
+    boolean removeAttendee(Long eventId, User user);
+    boolean addAttendee(Long eventId, User user);
 
 }
 
