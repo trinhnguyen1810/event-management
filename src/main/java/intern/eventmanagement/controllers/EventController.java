@@ -5,7 +5,6 @@ import intern.eventmanagement.entity.User;
 import intern.eventmanagement.service.EventService;
 import intern.eventmanagement.service.UserService;
 import intern.eventmanagement.util.FileUploadUtil;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +29,7 @@ public class EventController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = { "/showEvents" })
+    @GetMapping(value = {"/showEvents"})
     public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {
         ModelAndView mav = new ModelAndView("list-events");
         List<Event> eventList = eventService.getAllEvents();
@@ -40,7 +42,7 @@ public class EventController {
         return mav;
     }
 
-    @GetMapping(value = { "/showUpcomingEvents" })
+    @GetMapping(value = {"/showUpcomingEvents"})
     public ModelAndView showUpcomingEvents() {
         ModelAndView mav = new ModelAndView("list-events");
         List<Event> eventList = eventService.getUpcomingEvents();
@@ -48,14 +50,15 @@ public class EventController {
         return mav;
     }
 
-    @GetMapping(value = { "/showPastEvents" })
+    @GetMapping(value = {"/showPastEvents"})
     public ModelAndView showPastEvents() {
         ModelAndView mav = new ModelAndView("list-events");
         List<Event> eventList = eventService.getPastEvents();
         mav.addObject("events", eventList);
         return mav;
     }
-    @GetMapping(value = { "/showAllEventsUsers" })
+
+    @GetMapping(value = {"/showAllEventsUsers"})
     public ModelAndView showAllEventsUsers() {
         ModelAndView mav = new ModelAndView("list-events-users");
         List<Event> eventList = eventService.getAllEvents();
@@ -81,27 +84,39 @@ public class EventController {
 
     @PostMapping("/saveEvent")
     public String saveEvent(@ModelAttribute Event event, @RequestParam("image") MultipartFile multipartFile, Authentication authentication) throws IOException {
-        eventService.saveEvent(event,multipartFile);
+        eventService.saveEvent(event, multipartFile);
         String uploadDir = "event-photo/" + event.getId();
         String fileName = event.getPhoto();
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         String email = authentication.getName();
-        User currentUser = userService.findByEmail(String email);
+        User currentUser = userService.findByEmail(email);
         return "redirect:/showEvents";
     }
 
     @GetMapping("/showUpdateEvent")
     public ModelAndView showUpdateForm(@RequestParam Long eventId) {
-        ModelAndView mav = new ModelAndView("add-event-form");
         Event event = eventService.getEventById(eventId);
-        mav.addObject("event", event);
-        return mav;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        if (event.getCreatedBy().getEmail().equals(currentUsername)) {
+            ModelAndView mav = new ModelAndView("add-event-form");
+            mav.addObject("event", event);
+            return mav;
+        } else {
+            return new ModelAndView("redirect:/access-denied");
+        }
     }
 
     @GetMapping("/deleteEvent")
     public String deleteEvent(@RequestParam Long eventId) {
-
-        eventService.deleteEventById(eventId);
-        return "redirect:/showEvents";
+        Event event = eventService.getEventById(eventId);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        if (event.getCreatedBy().getEmail().equals(currentUsername)) {
+            eventService.deleteEventById(eventId);
+            return "redirect:/showEvents";
+        } else {
+            return "redirect:/access-denied";
+        }
     }
 }
