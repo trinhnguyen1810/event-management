@@ -23,6 +23,9 @@
   </div>
   <div class="classify-containter">
     <div class="type">
+      <a th:href="@{/showEvents(tag='my')}">
+        <button class="button-event-type">MyEvents</button>
+      </a>
       <a th:href="@{/showEvents}">
       <button class="button-event-type">All Events</button></a>
       <a th:href="@{/showEvents(tag='past')}">

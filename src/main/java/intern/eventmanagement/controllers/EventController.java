@@ -32,25 +32,13 @@ public class EventController {
         } else if ("past".equals(tag)) {
             eventList = eventService.getPastEvents();
         }
+        else if ("my".equals(tag)) {
+            eventList = eventService.getMyEvents();
+        }
         mav.addObject("events", eventList);
         return mav;
     }
 
-    @GetMapping(value = { "/showUpcomingEvents" })
-    public ModelAndView showUpcomingEvents() {
-        ModelAndView mav = new ModelAndView("list-events");
-        List<Event> eventList = eventService.getUpcomingEvents();
-        mav.addObject("events", eventList);
-        return mav;
-    }
-
-    @GetMapping(value = { "/showPastEvents" })
-    public ModelAndView showPastEvents() {
-        ModelAndView mav = new ModelAndView("list-events");
-        List<Event> eventList = eventService.getPastEvents();
-        mav.addObject("events", eventList);
-        return mav;
-    }
     @GetMapping(value = { "/showAllEventsUsers" })
     public ModelAndView showAllEventsUsers() {
         ModelAndView mav = new ModelAndView("list-events-users");
