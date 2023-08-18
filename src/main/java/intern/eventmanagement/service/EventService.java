@@ -11,6 +11,8 @@ public interface EventService {
     List<Event> getAllEvents();
     List<Event> getUpcomingEvents();
     List<Event> getPastEvents();
+
+    List<Event> getMyEvents();
     Event getEventById(Long eventId);
 
     void saveEvent(Event event, MultipartFile multipartFile) throws IOException;
@@ -18,6 +20,9 @@ public interface EventService {
     void deleteEventById(Long eventId);
     boolean removeAttendee(Long eventId, User user);
     boolean addAttendee(Long eventId, User user);
+
+     User getCurrentUser();
+
 
 }
 

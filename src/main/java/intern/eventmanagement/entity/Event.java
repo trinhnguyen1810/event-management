@@ -1,17 +1,18 @@
 package intern.eventmanagement.entity;
-import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.time.ZoneId;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 
 
@@ -35,7 +36,7 @@ public class Event {
     private String timeEvent;
     @Transient
     private Event.EventStatus eventStatus;
-
+    @Column
     private String dateCreate;
     @Column(nullable = false)
     private String location;
@@ -43,6 +44,7 @@ public class Event {
     @ElementCollection
     private Set<String> categories = new HashSet<>();
 
+    @Column
     private String urlLink;
     @Column(nullable = false)
     private String organizer;
@@ -53,6 +55,7 @@ public class Event {
     @Column(length = 4000,nullable=false)
     private String description;
 
+    @Column
     @ManyToMany
     private Set<User> attendees = new HashSet<>();
 

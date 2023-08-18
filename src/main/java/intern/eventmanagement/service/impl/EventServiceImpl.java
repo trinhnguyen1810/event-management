@@ -1,13 +1,16 @@
 package intern.eventmanagement.service.impl;
 
 import intern.eventmanagement.entity.Event;
+import intern.eventmanagement.entity.User;
 import intern.eventmanagement.repository.EventRepository;
 import intern.eventmanagement.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import intern.eventmanagement.entity.User;
+
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
@@ -51,6 +54,7 @@ public class EventServiceImpl implements EventService {
         events.forEach(Event::updateEventStatus);
         return upcomingEvents;
     }
+
     @Override
     public Event getEventById(Long eventId) {
         return eventRepository.findById(eventId).orElse(null);
@@ -86,6 +90,26 @@ public class EventServiceImpl implements EventService {
             return true;
         }
         return false;
+    }
+
+    public List<Event> getMyEvents() {
+        List<Event> events = eventRepository.findAll();
+        events.forEach(Event::updateEventStatus);
+        User currentUser = getCurrentUser();
+        List<Event> upcomingEvents = events.stream()
+                .filter(event -> event.getAttendees().contains(currentUser) &&
+                        event.getEventStatus() == Event.EventStatus.UPCOMING)
+                .collect(Collectors.toList());
+
+        return upcomingEvents;
+    }
+
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            return (User) authentication.getPrincipal();
+        }
+        return null;
     }
 
 

@@ -1,6 +1,6 @@
 package intern.eventmanagement.controllers;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
+
+import intern.eventmanagement.entity.User;
 import intern.eventmanagement.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import intern.eventmanagement.entity.User;
 
 @RestController
 public class AttendeeController {
@@ -37,4 +36,5 @@ public class AttendeeController {
             return ResponseEntity.badRequest().body("Failed to remove user from attendees");
         }
     }
+
 }
