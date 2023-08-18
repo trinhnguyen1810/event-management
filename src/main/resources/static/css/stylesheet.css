@@ -214,10 +214,12 @@ h1 { text-align: center;
 }
 
 
-.additional-info{
+.additional-info {
     margin-bottom: 60px;
+}
 
-.rsvp-button:c
-
+.rsvped {
+    background-color: white !important;
+    color: purple !important;
 }
 

@@ -1,30 +1,41 @@
-2023-08-17 00:03:39.846  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=49m50s789ms).
-2023-08-17 00:19:35.013  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m55s178ms).
-2023-08-17 00:52:59.946  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=33m24s932ms).
-2023-08-17 01:31:12.796  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=38m12s850ms).
-2023-08-17 02:54:00.195  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h22m47s399ms).
-2023-08-17 02:55:45.030  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m44s835ms).
-2023-08-17 03:29:49.307  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=34m4s277ms).
-2023-08-17 04:50:30.638  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h20m41s332ms).
-2023-08-17 06:13:22.422  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h22m51s783ms).
-2023-08-17 07:02:19.402  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48m56s981ms).
-2023-08-17 07:43:33.546  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=41m14s137ms).
-2023-08-17 08:03:05.482  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m1s806ms).
-2023-08-17 08:33:14.181  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m8s705ms).
-2023-08-17 08:46:39.535  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m25s354ms).
-2023-08-17 08:47:50.879  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s344ms).
-2023-08-17 09:20:46.300  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=32m55s421ms).
-2023-08-17 11:15:46.751  INFO 19855 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-08-17 11:15:46.756  INFO 19855 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-08-17 11:15:46.810  INFO 19855 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 53 ms
-2023-08-17 11:52:41.298  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m24s6ms).
-2023-08-17 12:32:17.597  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=39m36s316ms).
-2023-08-17 13:41:32.798  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h9m15s200ms).
-2023-08-17 15:01:53.174  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h20m20s376ms).
-2023-08-17 15:36:03.114  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=34m9s941ms).
-2023-08-17 16:12:35.362  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=36m32s248ms).
-2023-08-17 16:55:42.550  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=43m7s188ms).
-2023-08-17 17:33:41.308  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=37m58s757ms).
-2023-08-17 19:23:59.762  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=47s350ms).
-2023-08-17 20:14:03.997  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50m4s329ms).
-2023-08-17 20:20:44.363  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m40s365ms).
+2023-08-18 00:50:27.372  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h6m45s405ms).
+2023-08-18 02:13:54.687  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h23m27s314ms).
+2023-08-18 03:03:13.754  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=49m19s68ms).
+2023-08-18 04:28:29.154  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h25m15s399ms).
+2023-08-18 05:38:11.788  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h9m42s634ms).
+2023-08-18 06:58:50.091  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h20m38s303ms).
+2023-08-18 08:00:34.712  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h1m44s605ms).
+2023-08-18 08:03:38.793  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m3s860ms).
+2023-08-18 08:32:16.109  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m29s714ms).
+2023-08-18 08:36:29.725  WARN 19855 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m43s555ms).
+2023-08-18 08:39:03.616  INFO 19855 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-18 08:39:03.650  INFO 19855 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-08-18 08:39:03.671  INFO 19855 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-08-18 09:52:35.922  INFO 1403 --- [restartedMain] i.e.EventManagementApplication           : Starting EventManagementApplication using Java 20.0.1 on Vivians-MacBook-Air.local with PID 1403 (/Users/viviannguyen/Downloads/event-management/target/classes started by viviannguyen in /Users/viviannguyen/Downloads/event-management)
+2023-08-18 09:52:35.923  INFO 1403 --- [restartedMain] i.e.EventManagementApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-08-18 09:52:35.960  INFO 1403 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-08-18 09:52:35.960  INFO 1403 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-08-18 09:52:36.413  INFO 1403 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-18 09:52:36.451  INFO 1403 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2023-08-18 09:52:36.886  INFO 1403 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-08-18 09:52:36.892  INFO 1403 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-08-18 09:52:36.893  INFO 1403 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-08-18 09:52:36.930  INFO 1403 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-08-18 09:52:36.930  INFO 1403 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 970 ms
+2023-08-18 09:52:37.054  INFO 1403 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-18 09:52:37.089  INFO 1403 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-18 09:52:37.190  INFO 1403 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-18 09:52:37.249  INFO 1403 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-18 09:52:37.253  WARN 1403 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-08-18 09:52:37.564  INFO 1403 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-18 09:52:37.584  INFO 1403 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-08-18 09:52:38.072  INFO 1403 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-18 09:52:38.078  INFO 1403 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-18 09:52:38.400  WARN 1403 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-18 09:52:38.570  INFO 1403 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7b11df93, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b7f9ed9, org.springframework.security.web.context.SecurityContextPersistenceFilter@6410e6a8, org.springframework.security.web.header.HeaderWriterFilter@31e493ed, org.springframework.security.web.csrf.CsrfFilter@2f27f086, org.springframework.security.web.authentication.logout.LogoutFilter@2acedcf9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@242fa71c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37608cea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77a730a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77599d4f, org.springframework.security.web.session.SessionManagementFilter@4107e846, org.springframework.security.web.access.ExceptionTranslationFilter@48d4a440, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@f3f6a89]
+2023-08-18 09:52:38.859  INFO 1403 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-08-18 09:52:38.891  INFO 1403 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-18 09:52:38.904  INFO 1403 --- [restartedMain] i.e.EventManagementApplication           : Started EventManagementApplication in 3.24 seconds (JVM running for 3.754)
+2023-08-18 09:53:14.574  INFO 1403 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-08-18 09:53:14.575  INFO 1403 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-08-18 09:53:14.578  INFO 1403 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
