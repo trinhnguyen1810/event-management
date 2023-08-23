@@ -59,12 +59,11 @@ public class EventServiceImpl implements EventService {
     public List<Event> searchEvents(String keyword) {
         List<Event> events = eventRepository.findAll();
         List<Event> matchingEvents = events.stream()
-                .filter(event -> event.getEventStatus() == Event.EventStatus.UPCOMING)
                 .filter(event -> event.getEventName().toLowerCase().contains(keyword.toLowerCase()) ||
                         event.getDescription().toLowerCase().contains(keyword.toLowerCase()))
                 .sorted(Comparator.comparing(Event::getDateEvent))
                 .collect(Collectors.toList());
-        events.forEach(Event::updateEventStatus);
+
         return matchingEvents;
     }
 

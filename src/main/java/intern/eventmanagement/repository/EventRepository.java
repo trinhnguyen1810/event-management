@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface EventRepository extends JpaRepository<Event, Long> {
     Optional<Event> findById(Long Id);
 
-    @Query("SELECT e FROM Event e WHERE CONCAT(e.id, ' ', e.eventName, ' ', e.timeEvent, ' ', e.location) LIKE %?1%")
+    @Query("SELECT e FROM Event e WHERE e.eventName LIKE %?1%")
     public List<Event> search(String keyword);
 
 

@@ -49,6 +49,13 @@
       <button class="button-event-type">Upcoming Events</button>
       </a>
     </div>
+    <div class="search-container">
+      <form th:action="@{/showEvents}" method="get">
+        <input type="hidden" name="tag" th:value="${selectedTag}" />
+        <input type="text" name="keyword" th:value="${searchKeyword}" placeholder="Search events..." />
+        <button type="submit">Search</button>
+      </form>
+    </div>
 
     <div class ="event-board">
       <div class="event-container" th:each="event : ${events}">

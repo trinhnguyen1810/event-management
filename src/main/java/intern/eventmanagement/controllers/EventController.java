@@ -22,20 +22,32 @@ public class EventController {
     private EventService eventService;
 
     @GetMapping(value = { "/showEvents" })
-    public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {
+    public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag,
+                                   @RequestParam(name = "keyword", required = false) String keyword) {
         ModelAndView mav = new ModelAndView("list-events");
         mav.addObject("pastStatus", Event.EventStatus.PAST);
-        List<Event> eventList = eventService.getAllEvents();
-        if ("upcoming".equals(tag)) {
-            eventList = eventService.getUpcomingEvents();
-        } else if ("past".equals(tag)) {
-            eventList = eventService.getPastEvents();
-        } else if ("my".equals(tag)) {
-            eventList = eventService.getMyEvents();
+        List<Event> eventList;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            eventList = eventService.searchEvents(keyword);
+        } else {
+            if ("upcoming".equals(tag)) {
+                eventList = eventService.getUpcomingEvents();
+            } else if ("past".equals(tag)) {
+                eventList = eventService.getPastEvents();
+            } else if ("my".equals(tag)) {
+                eventList = eventService.getMyEvents();
+            } else {
+                eventList = eventService.getAllEvents();
+            }
         }
+
         mav.addObject("events", eventList);
+        mav.addObject("selectedTag", tag);
+        mav.addObject("searchKeyword", keyword);
         return mav;
     }
+
 
 
 
@@ -97,5 +109,14 @@ public class EventController {
         return  "list-events";
     }
 
+    /*@GetMapping("/searchEvents")
+    public ModelAndView searchEvents(@RequestParam String keyword) {
+        List<Event> matchingEvents = eventService.searchEvents(keyword);
+
+        ModelAndView mav = new ModelAndView("list-events"); // Assuming your Thymeleaf template name is "list-events"
+        mav.addObject("events", matchingEvents);
+        mav.addObject("searchKeyword", keyword); // Pass the search keyword to the template
+        return mav;
+    } */
 
 }
