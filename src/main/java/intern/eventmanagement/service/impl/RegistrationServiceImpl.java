@@ -56,5 +56,29 @@ public class RegistrationServiceImpl implements RegistrationService {
         newUser.setRoles(Collections.singleton(defaultRole));
         userService.save(newUser);
         model.addAttribute("success", true);
+        userMapper.toDto(newUser);}
+
+    public void processRegistrationAdmin(UserDto userDto, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return;
+        }
+
+        User existingUser = userService.findByEmail(userDto.getEmail());
+        if (existingUser != null) {
+            result.rejectValue("email", null, "Email already exists");
+            return;
+        }
+
+        User newUser = userMapper.toEntity(userDto); // Use the mapper to create a new User entity
+        newUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        newUser.setEnabled(true);
+        Role defaultRole = roleRepository.findByName("ADMIN")
+                .orElseThrow(() -> new RuntimeException("Default role 'ADMIN' not found"));
+        newUser.setRoles(Collections.singleton(defaultRole));
+        userService.save(newUser);
+        model.addAttribute("success", true);
         userMapper.toDto(newUser);
-}}
+
+
+    }
+}

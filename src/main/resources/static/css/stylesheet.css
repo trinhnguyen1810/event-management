@@ -16,6 +16,11 @@ h1 { text-align: center;
     padding: 5px;
 
 }
+
+h2 {
+    margin: 15px;
+    padding: 5px;
+}
 .classify-container {
     align-items: center;
     display: inline-flex;
@@ -201,13 +206,13 @@ h1 { text-align: center;
     text-decoration: underline;
 }
 
-#edit-button{
+#update-button{
     float:left;
     padding: 10px;
     margin-left: 30px;
 }
 
-#edit-button:hover{
+#update-button:hover{
     color: whitesmoke;
     background-color: #5D9C59;
     text-decoration: underline;
@@ -222,4 +227,47 @@ h1 { text-align: center;
     background-color: white !important;
     color: purple !important;
 }
+
+/* Style the navigation bar */
+.navbar {
+    width: 100%;
+    background: radial-gradient(circle at 10% 20%, rgb(163, 175, 243) 0%, rgb(220, 182, 232) 100.2%);
+;
+    overflow: auto;
+    border-radius: 10px;
+    flex: auto;
+}
+
+/* Navbar links */
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #9370DB;
+}
+
+.active {
+    background-color: #9370DB;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+}
+a, u {
+    text-decoration: none;
+}
+.logout-link {
+    text-align: right;}
+
+
+
 
