@@ -38,7 +38,7 @@
   <div class="classify-containter">
     <div class="type">
       <a th:href="@{/showEvents(tag='my')}">
-        <button class="button-event-type" sec:authorize="hasAuthority('USER')">MyEvents</button>
+        <button class="button-event-type" sec:authorize="hasAuthority('USER')">My Events</button>
       </a>
       <a th:href="@{/showEvents}">
       <button class="button-event-type">All Events</button></a>
@@ -49,6 +49,7 @@
       <button class="button-event-type">Upcoming Events</button>
       </a>
     </div>
+
     <div class ="event-board">
       <div class="event-container" th:each="event : ${events}">
         <div class="image-container">

@@ -56,6 +56,20 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<Event> searchEvents(String keyword) {
+        List<Event> events = eventRepository.findAll();
+        List<Event> matchingEvents = events.stream()
+                .filter(event -> event.getEventStatus() == Event.EventStatus.UPCOMING)
+                .filter(event -> event.getEventName().toLowerCase().contains(keyword.toLowerCase()) ||
+                        event.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+                .sorted(Comparator.comparing(Event::getDateEvent))
+                .collect(Collectors.toList());
+        events.forEach(Event::updateEventStatus);
+        return matchingEvents;
+    }
+
+
+    @Override
     public Event getEventById(Long eventId) {
         return eventRepository.findById(eventId).orElse(null);
     }
@@ -111,6 +125,8 @@ public class EventServiceImpl implements EventService {
         }
         return null;
     }
+
+
 
 
 }
