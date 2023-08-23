@@ -23,18 +23,19 @@ public class EventController {
     @GetMapping(value = { "/showEvents" })
     public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {
         ModelAndView mav = new ModelAndView("list-events");
+        mav.addObject("pastStatus", Event.EventStatus.PAST);
         List<Event> eventList = eventService.getAllEvents();
         if ("upcoming".equals(tag)) {
             eventList = eventService.getUpcomingEvents();
         } else if ("past".equals(tag)) {
             eventList = eventService.getPastEvents();
-        }
-        else if ("my".equals(tag)) {
+        } else if ("my".equals(tag)) {
             eventList = eventService.getMyEvents();
         }
         mav.addObject("events", eventList);
         return mav;
     }
+
 
     @GetMapping(value = { "/showAllEventsUsers" })
     public ModelAndView showAllEventsUsers() {
@@ -85,7 +86,6 @@ public class EventController {
     @GetMapping("/event/{eventId}")
     public String getEventDetails(@PathVariable Long eventId, Model model) {
         Event event = eventService.getEventById(eventId);
-
         User currentUser = eventService.getCurrentUser();
         boolean userRsvped = event.getAttendees().contains(currentUser);
 
