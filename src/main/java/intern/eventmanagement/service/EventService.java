@@ -18,8 +18,8 @@ public interface EventService {
     void saveEvent(Event event, MultipartFile multipartFile) throws IOException;
 
     void deleteEventById(Long eventId);
-    boolean removeAttendee(Long eventId, User user);
-    boolean addAttendee(Long eventId, User user);
+    boolean removeAttendee(Long eventId, String username);
+    boolean addAttendee(Long eventId, String username);
 
      User getCurrentUser();
 

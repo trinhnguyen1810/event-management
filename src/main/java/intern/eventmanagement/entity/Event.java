@@ -56,14 +56,15 @@ public class Event {
     private String description;
 
     @Column
-    @ManyToMany
-    private Set<User> attendees = new HashSet<>();
+    @ElementCollection
+    private Set<String> attendees = new HashSet<>();
 
     @Transient
     private String photosImagePath;
 
     public Event(String eventName, Date dateEvent, String timeEvent, String location,
-                 Set<String> categories, String photo, String urlLink, String organizer, String description) {
+                 Set<String> categories, String photo, String urlLink, String organizer, String description,
+                 Set<String> attendees) {
         this.eventName = eventName;
         this.timeEvent = timeEvent;
         this.dateEvent = dateEvent;
@@ -75,6 +76,7 @@ public class Event {
         this.organizer = organizer;
         this.description = description;
         this.photosImagePath = getPhotosImagePath();
+        this.attendees = attendees;
     }
 
     public enum EventStatus {
@@ -202,15 +204,23 @@ public class Event {
         this.description = description;
     }
 
-    public Set<User> getAttendees() {
+    public Set<String> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(Set<User> attendees) {
+    public void setAttendees(Set<String> attendees) {
         this.attendees = attendees;
     }
 
-    // remember to implement logic for date type
+    public void addAttendees(String username) {
+        this.attendees.add(username);
+
+    }
+
+    public void deleteAttendees(String username) {
+        this.attendees.remove(username);
+
+    }
 
 
     @Override

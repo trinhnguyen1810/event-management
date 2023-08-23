@@ -3,6 +3,11 @@ $(document).ready(function () {
     const eventId = rsvpButton.attr("data-event-id");
     const initialRsvped = rsvpButton.attr("data-rsvped") === "true";
 
+    function checkUsername(username, repository){
+        
+
+    }
+
     rsvpButton.on("click", function () {
         const isRsvped = rsvpButton.hasClass("rsvped");
 

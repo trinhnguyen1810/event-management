@@ -5,4 +5,5 @@ import org.springframework.ui.Model;
 
 public interface RegistrationService {
     void processRegistration(UserDto userDto, BindingResult result, Model model);
+    void processRegistrationAdmin(UserDto userDto, BindingResult result, Model model);
 }

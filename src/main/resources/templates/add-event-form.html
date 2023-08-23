@@ -1,14 +1,33 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Add Employees</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <div class="container">
+    <div class="container">
+        <div class="navbar" sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')">
+            <a href="/showEvents"><i class="fa fa-fw fa-home"></i> Home</a>
+            <div sec:authorize="hasAuthority('SUPERADMIN')">
+                <a href="/listUsers"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+            </div>
+            <a href="/addEventForm"><i class="fa fa-plus"></i> Add Events</a>
+            <div class="logout-link">
+                <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Log Out
+                </a>
+                <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                </form>
+            </div>
+        </div>
     <h2> Add Event</h2>
     <hr/>
     <form th:action="@{/saveEvent}" th:object="${event}" method="POST" enctype="multipart/form-data">

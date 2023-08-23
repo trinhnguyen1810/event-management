@@ -71,10 +71,10 @@ public class EventServiceImpl implements EventService {
         eventRepository.deleteById(eventId);
     }
     @Override
-    public boolean addAttendee(Long eventId, User user) {
+    public boolean addAttendee(Long eventId, String username) {
         Event event = eventRepository.findById(eventId).orElse(null);
         if (event != null) {
-            event.getAttendees().add(user);
+            event.addAttendees(username);
             eventRepository.save(event);
             return true;
         }
@@ -82,10 +82,10 @@ public class EventServiceImpl implements EventService {
     }
     @Override
 
-    public boolean removeAttendee(Long eventId, User user) {
+    public boolean removeAttendee(Long eventId, String username) {
         Event event = eventRepository.findById(eventId).orElse(null);
         if (event != null) {
-            event.getAttendees().remove(user);
+            event.deleteAttendees(username);
             eventRepository.save(event);
             return true;
         }
