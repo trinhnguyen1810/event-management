@@ -98,7 +98,7 @@ public class EventServiceImpl implements EventService {
     public boolean removeAttendee(Long eventId, String username) {
         Event event = eventRepository.findById(eventId).orElse(null);
         if (event != null) {
-            event.deleteAttendees(username);
+            event.removeAttendees(username);
             eventRepository.save(event);
             return true;
         }

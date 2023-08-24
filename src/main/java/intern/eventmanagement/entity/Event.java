@@ -212,14 +212,13 @@ public class Event {
         this.attendees = attendees;
     }
 
-    public void addAttendees(String username) {
-        this.attendees.add(username);
 
+    public void addAttendees(String username) {
+        attendees.add(username);
     }
 
-    public void deleteAttendees(String username) {
-        this.attendees.remove(username);
-
+    public void removeAttendees(String username) {
+        attendees.remove(username);
     }
 
 

@@ -90,7 +90,9 @@
                th:src="@{images/event.jpg}" />
         </div>
         <div class="content-container">
-          <p class="event-name"> <a th:href="@{/eventPost(eventId=${event.id})}"> <b th:text="${event.eventName}"></b></a></p>
+          <p class="event-name"> <a th:href="@{/eventPost(eventId=${event.id})}" sec:authorize="hasAuthority('USER')"> <b th:text="${event.eventName}"></b></a></p>
+          <h3> <b th:text="${event.eventName}"  sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')"></b></h3>
+
           <div class="seperator"> </div>
           <p class="event-date">
             <i class="far fa-calendar-alt"></i>
