@@ -14,7 +14,7 @@ public interface EventService {
     List<Event> getMyEvents(String userEmail);
     Event getEventById(Long eventId);
     void saveEvent(Event event, MultipartFile multipartFile) throws IOException;
-
+    List<Event> searchEvents(String keyword);
     void deleteEventById(Long eventId);
     boolean removeAttendee(Long eventId, String username);
     boolean addAttendee(Long eventId, String username);

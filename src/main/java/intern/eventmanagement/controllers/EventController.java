@@ -117,5 +117,14 @@ public class EventController {
         return "redirect:/eventPost?eventId=" + eventId;
     }
 
+    @GetMapping("/searchEvents")
+    public ModelAndView searchEvents(@RequestParam String keyword) {
+        List<Event> matchingEvents = eventService.searchEvents(keyword);
+
+        ModelAndView mav = new ModelAndView("list-events");
+        mav.addObject("events", matchingEvents);
+        return mav;
+    }
+
 
 }

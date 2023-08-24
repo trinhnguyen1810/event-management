@@ -3,31 +3,41 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <title> events </title>
-  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
 </head>
 <body>
 <main>
   <div class="settings">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <div class="container">
-      <div class="navbar" sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')">
+      <div class="navbar">
         <a href="/showEvents"><i class="fa fa-fw fa-home"></i> Home</a>
         <div sec:authorize="hasAuthority('SUPERADMIN')">
           <a href="/listUsers"><i class="fa fa-fw fa-user"></i> Manage Users</a>
         </div>
+        <div sec:authorize="hasAnyAuthority('SUPERADMIN','ADMIN')">
         <a href="/addEventForm"><i class="fa fa-plus"></i> Add Events</a>
+      </div>
         <div class="logout-link">
-          <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
             Log Out
           </a>
           <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
           </form>
+          </div>
+          <div class="search-container">
+            <form th:action="@{/searchEvents}" method="get">
+              <input type="hidden" name="tag" th:value="${selectedTag}" />
+              <div class="big-search-bar">
+                <i class="fas fa-search"></i> <!-- Font Awesome magnifying glass icon -->
+                <input type="text" name="keyword" th:value="${searchKeyword}" placeholder="Search events..." />
+                <button type="submit">Search</button>
+              </div>
+            </form>
         </div>
       </div>
-
 
   <div class ="header-event-board">
     <h1> Welcome to <b> [[${#request.userPrincipal.principal.fullName}]]</b>'s Event Board </h1>
@@ -35,7 +45,7 @@
   <div class="classify-containter">
     <div class="type">
       <a th:href="@{/showEvents(tag='my')}">
-        <button class="button-event-type" sec:authorize="hasAuthority('USER')">MyEvents</button>
+        <button class="button-event-type" sec:authorize="hasAuthority('USER')">My Events</button>
       </a>
       <a th:href="@{/showEvents}">
       <button class="button-event-type">All Events</button></a>

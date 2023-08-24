@@ -177,10 +177,8 @@
     flex: auto;
 }
 
-/* Navbar links */
 .navbar a {
     float: left;
-    text-align: center;
     padding: 12px;
     color: white;
     text-decoration: none;
@@ -204,7 +202,6 @@
 a, u {
     text-decoration: none;
 }
-.logout-link {
-    text-align: right;}
+
 
 

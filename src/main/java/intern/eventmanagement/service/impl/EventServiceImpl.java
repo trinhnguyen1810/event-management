@@ -121,5 +121,17 @@ public class EventServiceImpl implements EventService {
         return null;
     }
 
+    @Override
+    public List<Event> searchEvents(String keyword) {
+        List<Event> events = eventRepository.findAll();
+        List<Event> matchingEvents = events.stream()
+                .filter(event -> event.getEventName().toLowerCase().contains(keyword.toLowerCase()) ||
+                        event.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+                .sorted(Comparator.comparing(Event::getDateEvent))
+                .collect(Collectors.toList());
+
+        return matchingEvents;
+    }
+
 
 }
