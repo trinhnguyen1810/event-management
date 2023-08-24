@@ -47,13 +47,28 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> getUpcomingEvents() {
         List<Event> events = eventRepository.findAll();
+        events.forEach(Event::updateEventStatus);
+
         List<Event> upcomingEvents = events.stream()
                 .filter(event -> event.getEventStatus() == Event.EventStatus.UPCOMING)
                 .sorted(Comparator.comparing(Event::getDateEvent))
                 .collect(Collectors.toList());
-        events.forEach(Event::updateEventStatus);
         return upcomingEvents;
     }
+
+    @Override
+    public List<Event> getMyEvents(String userEmail) {
+        List<Event> events = eventRepository.findAll();
+        events.forEach(Event::updateEventStatus);
+
+        List<Event> userEvents = events.stream()
+                .filter(event -> event.getAttendees().contains(userEmail) &&
+                        event.getEventStatus() == Event.EventStatus.UPCOMING)
+                .collect(Collectors.toList());
+
+        return userEvents;
+    }
+
 
     @Override
     public Event getEventById(Long eventId) {
@@ -92,16 +107,10 @@ public class EventServiceImpl implements EventService {
         return false;
     }
 
-    public List<Event> getMyEvents() {
-        List<Event> events = eventRepository.findAll();
-        events.forEach(Event::updateEventStatus);
-        User currentUser = getCurrentUser();
-        List<Event> upcomingEvents = events.stream()
-                .filter(event -> event.getAttendees().contains(currentUser) &&
-                        event.getEventStatus() == Event.EventStatus.UPCOMING)
-                .collect(Collectors.toList());
-
-        return upcomingEvents;
+    @Override
+    public boolean isUserRsvped(Long eventId, String username) {
+        Event event = eventRepository.findById(eventId).orElse(null);
+        return event != null && event.getAttendees().contains(username);
     }
 
     public User getCurrentUser() {

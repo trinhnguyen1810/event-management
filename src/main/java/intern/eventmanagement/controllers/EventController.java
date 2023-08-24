@@ -1,13 +1,16 @@
 package intern.eventmanagement.controllers;
 
 import intern.eventmanagement.entity.Event;
-import intern.eventmanagement.entity.User;
 import intern.eventmanagement.service.EventService;
+import intern.eventmanagement.service.MyUserDetails;
 import intern.eventmanagement.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,26 +24,25 @@ public class EventController {
     private EventService eventService;
 
     @GetMapping(value = { "/showEvents" })
-    public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag) {
+    public ModelAndView showEvents(@RequestParam(name = "tag", required = false) String tag,
+                                   @AuthenticationPrincipal MyUserDetails userDetails) {
         ModelAndView mav = new ModelAndView("list-events");
         mav.addObject("pastStatus", Event.EventStatus.PAST);
-        List<Event> eventList = eventService.getAllEvents();
+        String currentUsername = userDetails.getUsername();
+        mav.addObject("currentUsername", currentUsername);
+        mav.addObject("eventService", eventService);
+        List<Event> eventList;
+
         if ("upcoming".equals(tag)) {
             eventList = eventService.getUpcomingEvents();
         } else if ("past".equals(tag)) {
             eventList = eventService.getPastEvents();
         } else if ("my".equals(tag)) {
-            eventList = eventService.getMyEvents();
+            String currentUserEmail = userDetails.getUsername();
+            eventList = eventService.getMyEvents(currentUserEmail);
+        } else {
+            eventList = eventService.getAllEvents();
         }
-        mav.addObject("events", eventList);
-        return mav;
-    }
-
-
-    @GetMapping(value = { "/showAllEventsUsers" })
-    public ModelAndView showAllEventsUsers() {
-        ModelAndView mav = new ModelAndView("list-events-users");
-        List<Event> eventList = eventService.getAllEvents();
         mav.addObject("events", eventList);
         return mav;
     }
@@ -54,8 +56,14 @@ public class EventController {
     }
 
     @GetMapping("/eventPost")
-    public ModelAndView eventPost(@RequestParam Long eventId) {
+    public ModelAndView eventPost(@RequestParam Long eventId,
+                                  @AuthenticationPrincipal MyUserDetails userDetails) {
         ModelAndView mav = new ModelAndView("post");
+        String currentUsername = userDetails.getUsername();
+        List<Event> eventList = eventService.getUpcomingEvents();
+        mav.addObject("currentUsername", currentUsername);
+        mav.addObject("eventService", eventService);
+        mav.addObject("eventList",eventList);
         Event event = eventService.getEventById(eventId);
         mav.addObject("event", event);
         return mav;
@@ -83,16 +91,30 @@ public class EventController {
         return "redirect:/showEvents";
     }
 
-    @GetMapping("/event/{eventId}")
-    public String getEventDetails(@PathVariable Long eventId, Model model) {
-        Event event = eventService.getEventById(eventId);
-        User currentUser = eventService.getCurrentUser();
-        boolean userRsvped = event.getAttendees().contains(currentUser);
+    @PostMapping("/rsvp")
+    public String rsvp(@RequestParam Long eventId, @AuthenticationPrincipal MyUserDetails userDetails) {
+        String username = userDetails.getUsername();
+        boolean isUserRsvped = eventService.isUserRsvped(eventId, username);
+        if (isUserRsvped) {
+            boolean removed = eventService.removeAttendee(eventId, username);
 
-        model.addAttribute("event", event);
-        model.addAttribute("userRsvped", userRsvped);
+        } else {
+            boolean added = eventService.addAttendee(eventId, username);
+        }
+        return "redirect:/showEvents";
+    }
 
-        return  "list-events";
+    @PostMapping("/rsvpPost")
+    public String rsvpMy(@RequestParam Long eventId, @AuthenticationPrincipal MyUserDetails userDetails) {
+        String username = userDetails.getUsername();
+        boolean isUserRsvped = eventService.isUserRsvped(eventId, username);
+        if (isUserRsvped) {
+            boolean removed = eventService.removeAttendee(eventId, username);
+
+        } else {
+            boolean added = eventService.addAttendee(eventId, username);
+        }
+        return "redirect:/eventPost?eventId=" + eventId;
     }
 
 

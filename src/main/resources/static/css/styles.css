@@ -3,35 +3,18 @@
     box-sizing: border-box;
     padding: 0.5px;
     margin: 3px;
-
-}
-h1{ text-align: left;
-    background: linear-gradient(to right, #37306B, #5D9C59);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 40px;
-    font-weight: bold;
-    margin: 15px;
-    padding: 5px;
-
 }
 
 .header-event-board{
     background-color: white;
     border-radius: 30px;
     margin-left: 130px;
+    margin-top: 80px;
 }
 
 .info-container {
     padding: 30px
-
-
 }
-.host-tag{
-    margin-left: 20px;
-}
-
 
 .container {
     align-items: center;
@@ -94,24 +77,6 @@ h1{ text-align: left;
     vertical-align: baseline;
     border-width: thin;
 }
-.setting-button {
-    background: #5E5DF0;
-    border-radius: 999px;
-    box-shadow: #5E5DF0 0 10px 20px -10px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    opacity: 1;
-    outline: 0 solid transparent;
-    padding: 8px 18px;
-    word-break: break-word;
-    border: 0;
-
-
-}
 
 .rsvp-button:hover {
     color: white;
@@ -131,9 +96,8 @@ h1{ text-align: left;
     vertical-align: baseline;
     white-space: nowrap;
     border-radius: 15px;
-
-
 }
+
 .basic-info {
     border: 1px solid #000;
     border-width: 2px;
@@ -141,44 +105,106 @@ h1{ text-align: left;
     padding: 50px;
     display: inline-block;
     vertical-align:top;
-    margin: 50px;
-    margin-left: 50px;
+    margin: 100px;
     margin-top: 100px;
     width:400px;
     height: 300px;
     background-color: #fbfbf1;
 
-
 }
 
-.tags-button {
-    background-color: #e1ecf4;
-    border-radius: 3px;
-    border: 1px solid #7aa7c7;
-    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-    box-sizing: border-box;
-    color: #39739d;
+.rsvp-button {
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 10px;
+    color: #333333;
     cursor: pointer;
     display: inline-block;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.15385;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    list-style: none;
     margin: 0;
-    outline: none;
-    padding: 8px .8em;
-    position: relative;
+    padding: 15px 20px;
     text-align: center;
-    touch-action: manipulation;
+    transition: all 200ms;
     vertical-align: baseline;
-    border-radius: 20px;
-    white-space: nowrap;
+    border-width: thin;
 }
+
+.rsvp-button:hover {
+    color: white;
+    background-color: mediumpurple;
+    transition: 0.2s;
+}
+
+.rsvped-button {
+    background-color: mediumpurple;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 15px 20px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    border-width: thin;
+}
+
+.rsvped-button:hover {
+    color: #333333;
+    background-color: rgba(51, 51, 51, 0.05);
+    transition: 0.2s;
+    content:'Remove RSVP?';
+}
+
 
 .additional-container{
     padding: 20px;
 }
-.tags{
-    margin: 30px;
-    margin-left:85px;
 
+.navbar {
+    width: 100%;
+    margin: 20px;
+    background: radial-gradient(circle at 10% 20%, rgb(163, 175, 243) 0%, rgb(220, 182, 232) 100.2%);
+;
+    overflow: auto;
+    border-radius: 10px;
+    flex: auto;
 }
+
+/* Navbar links */
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #9370DB;
+}
+
+.active {
+    background-color: #9370DB;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+    }
+}
+a, u {
+    text-decoration: none;
+}
+.logout-link {
+    text-align: right;}
+
+

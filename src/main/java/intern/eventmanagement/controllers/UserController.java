@@ -18,13 +18,10 @@ import java.util.List;
 
 @Controller
 public class UserController {
-
     @Autowired
     private UserService userService;
-
     @Autowired
     private RegistrationService registrationService;
-
     @GetMapping( "/listUsers" )
     public ModelAndView showEmployees() {
         ModelAndView mav = new ModelAndView("list-users");
@@ -32,20 +29,17 @@ public class UserController {
         mav.addObject("users",list);
         return mav;
     }
-
     @GetMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
         userService.deleteUserById(userId);
         return "redirect:/listUsers";
     }
-
     @GetMapping("/registerAdmin")
     public String showRegistrationForm(Model model){
         UserDto user = new UserDto();
         model.addAttribute("userDto", user);
         return "register-admin";
     }
-
     @PostMapping("/registerAdmin")
     public String registerUser(
             @ModelAttribute("userDto") UserDto userDto,

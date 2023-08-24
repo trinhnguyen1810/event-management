@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,27 +11,36 @@
 </head>
 <body>
 <main>
-    <div class="settings">
-        <div>
-            <form th:action="@{/logout}" method="post">
-                <button class="setting-button" type="submit">Log out</button>
+    <div class="navbar">
+        <a href="/showEvents"><i class="fa fa-fw fa-home"></i> Home</a>
+        <div class="logout-link">
+            <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Log Out
+            </a>
+            <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
         </div>
+    </div>
+
+    </div>
+        <div class="seperator"> </div>
     </div>
     <div class ="header-event-board">
         <h1 th:text="${event.eventName}"> </h1>
         <div class ="host-tag"> <b th:text="${'Hosted by ' + event.organizer}"></b> </div>
-
     </div>
     <div class="event-post-containter">
         <div class="info-container">
             <div class="image-container">
                 <img th:if="${event.photosImagePath != null}"
                      th:src="@{${event.photosImagePath}}"
-                     width="740" />
+                     width="620"
+                     height ="350"/>
                 <img th:unless="${event.photosImagePath != null}"
                      src="../static/images/event.jpg"
-                     width="740"
+                     width="620"
+                     height ="350"
                      th:src="@{images/event.jpg}" />
             </div>
             <div class="basic-info">
@@ -42,7 +52,25 @@
                 </p>
                 <p> <span th:text="${event.urlLink} ?: 'None'"></span>
                 </p>
-                <div class="rsvp-button-container"> <button class="rsvp-button"> RSVP </button></div>
+                <div class="rsvp-button-container">
+                    <form th:action="@{/rsvpPost}" th:method="post">
+                        <input type="hidden" th:name="eventId" th:value="${event.id}" />
+                        <button class="rsvp-button"
+                                th:id="rsvp-button"
+                                sec:authorize="hasAuthority('USER')"
+                                th:if="${#lists.contains(eventList, event) and !eventService.isUserRsvped(event.id,currentUsername)}"
+                                type="submit">
+                            RSVP
+                        </button>
+                        <button class="rsvped-button"
+                                th:id="rsvped-button"
+                                sec:authorize="hasAuthority('USER')"
+                                th:if="${#lists.contains(eventList, event) and eventService.isUserRsvped(event.id,currentUsername)}"
+                                type="submit">
+                            RSVP-ed
+                        </button>
+                    </form>
+            </div>
                 <div class="seperator"> </div>
             </div>
             <div class="additional-container">
@@ -50,11 +78,6 @@
                     <b style="color:#606060; font-size: 25px;"> Details</b>
                     <p> <span th:text="${event.description}" style='white-space:pre'></span>
                     </p>
-                </div>
-                <div class="tags">
-                    <button class="tags-button"> Event </button>
-                    <button class="tags-button"> Party </button>
-                    <button class="tags-button"> Idk honestly </button>
                 </div>
             </div>
         </div>

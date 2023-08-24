@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
             model.addAttribute("userDto", user);
             return "register";
         }
-
         @PostMapping("/register")
         public String registerUser(
                 @ModelAttribute("userDto") UserDto userDto,

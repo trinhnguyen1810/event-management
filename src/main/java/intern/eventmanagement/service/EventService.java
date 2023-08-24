@@ -11,17 +11,17 @@ public interface EventService {
     List<Event> getAllEvents();
     List<Event> getUpcomingEvents();
     List<Event> getPastEvents();
-
-    List<Event> getMyEvents();
+    List<Event> getMyEvents(String userEmail);
     Event getEventById(Long eventId);
-
     void saveEvent(Event event, MultipartFile multipartFile) throws IOException;
 
     void deleteEventById(Long eventId);
     boolean removeAttendee(Long eventId, String username);
     boolean addAttendee(Long eventId, String username);
+    boolean isUserRsvped(Long eventId, String username);
+    User getCurrentUser();
 
-     User getCurrentUser();
+
 
 
 }
