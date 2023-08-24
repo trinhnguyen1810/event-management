@@ -11,23 +11,23 @@
   <div class="settings">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div class="navbar">
-      <a href="/showEvents"><i class="fa fa-fw fa-home"></i> Home</a>
-      <div sec:authorize="hasAuthority('SUPERADMIN')">
-        <a href="/listUsers"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+    <div class="container">
+      <div class="navbar" sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')">
+        <a href="/showEvents"><i class="fa fa-fw fa-home"></i> Home</a>
+        <div sec:authorize="hasAuthority('SUPERADMIN')">
+          <a href="/listUsers"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+        </div>
+        <a href="/addEventForm"><i class="fa fa-plus"></i> Add Events</a>
+        <div class="logout-link">
+          <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Log Out
+          </a>
+          <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+          </form>
+        </div>
       </div>
-      <div sec:authorize="hasAnyAuthority('SUPERADMIN','ADMIN')">
-      <a href="/addEventForm"><i class="fa fa-plus"></i> Add Events</a>
-      </div>
-      <div class="logout-link">
-        <a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-          Log Out
-        </a>
-        <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
-          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        </form>
-      </div>
-    </div>
+
 
   <div class ="header-event-board">
     <h1> Welcome to <b> [[${#request.userPrincipal.principal.fullName}]]</b>'s Event Board </h1>
@@ -78,13 +78,14 @@
           <div class="additional-info">
             <div class="description-wrapper"> <p th:text="${event.description}"></p> </div>
           </div>
-          <div class="post-container" >
+          <div class="post-container">
             <a th:href="@{/showUpdateEvent(eventId=${event.id})}">
               <button class="post-button" id="update-button"sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')">Update</button>
             </a>
             <a th:href="@{/deleteEvent(eventId=${event.id})}">
               <button class="post-button" id="delete-button"sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')">Delete </button>
             </a>
+            <div class="rsvp-buttons-container">
             <th:block th:with="pastStatus=${pastStatus}">
               <form th:action="@{/rsvp}" th:method="post">
                 <input type="hidden" th:name="eventId" th:value="${event.id}" />
@@ -106,12 +107,13 @@
               </form>
             </th:block>
           </div>
+          </div>
       </div>
     </div>
   </div>
   </div>
   </div>
+  </div>
 </main>
 </body>
-
 </html>

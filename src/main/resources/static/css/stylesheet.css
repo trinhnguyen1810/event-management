@@ -33,7 +33,10 @@ h2 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
 }
+
 
 .add-button {
     margin-top: 20px;
@@ -173,6 +176,11 @@ h2 {
 
 
 }
+.rsvp-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .button-event-type {
     color: #333333;
@@ -239,13 +247,17 @@ h2 {
     background-color: #8f99fb;
     text-decoration: underline;
 }
-
-
 .additional-info {
-    margin-bottom: 60px;
+    overflow: hidden;
 }
 
-/* Style the navigation bar */
+.description-wrapper {
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .navbar {
     width: 100%;
     background: radial-gradient(circle at 10% 20%, rgb(163, 175, 243) 0%, rgb(220, 182, 232) 100.2%);
