@@ -38,6 +38,18 @@
           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </form>
       </div>
+      <div class="search-container">
+        <form th:action="@{/searchEvents}" method="get">
+          <input type="hidden" name="tag" th:value="${selectedTag}" />
+          <div class="big-search-bar">
+            <i class="fas fa-search"></i> <!-- Font Awesome magnifying glass icon -->
+            <input type="text" name="keyword" th:value="${searchKeyword}" placeholder="Search events..." />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+
+
     </div>
 
   <div class ="header-event-board">
@@ -62,20 +74,9 @@
       <button class="button-event-type">Upcoming Events</button>
       </a>
     </div>
-    <div class="container">
-      <div class="row height d-flex justify-content-center align-items-center">
-        <div class="col-md-8">
-          <div class="search">
-            <i class="fa fa-search"></i>
-            <form th:action="@{/showEvents}" method="get">
-              <input type="hidden" name="tag" th:value="${selectedTag}" />
-              <input type="text" class="form-control" name="keyword" th:value="${searchKeyword}" placeholder="Search events...">
-              <button class="btn btn-primary" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </div>design
-    </div>
+
+
+
 
 
     <div class ="event-board">

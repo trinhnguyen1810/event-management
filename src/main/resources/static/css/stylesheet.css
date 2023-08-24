@@ -64,13 +64,16 @@ h2 {
 
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
 
-       body{
+/*@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+       .search-container{
         background-color:#eee;
         font-family: "Poppins", sans-serif;
         font-weight: 300;
+        height: 100vh
        }
 
        .height{
@@ -119,7 +122,42 @@ h2 {
         width: 110px;
         background: blue;
 
-       }
+       } */
+/* Add styling for the magnifying glass icon */
+.big-search-bar i {
+    padding: 5px;
+    color: white; /* Adjust the color as needed */
+}
+
+/* Position the magnifying glass icon to the left */
+/* Remove the gray border around the search bar */
+.big-search-bar {
+    display: flex;
+    align-items: center;
+    border-radius: 8px 8px 8px 8px;
+    padding: 5px;
+    width: 300px;
+    /* Remove the border property */
+}
+
+
+.big-search-bar input {
+    flex: 1;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+
+.big-search-bar button {
+    background-color: #7085ff;
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
 
 
 
