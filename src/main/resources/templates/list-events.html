@@ -5,6 +5,19 @@
   <title> events </title>
   <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Bootstrap 5 JS (including Popper.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Your custom styles (if needed) -->
+  <link rel="stylesheet" type="text/css" th:href="@{/path/to/styles.css}" />
 </head>
 <body>
 <main>
@@ -49,13 +62,21 @@
       <button class="button-event-type">Upcoming Events</button>
       </a>
     </div>
-    <div class="search-container">
-      <form th:action="@{/showEvents}" method="get">
-        <input type="hidden" name="tag" th:value="${selectedTag}" />
-        <input type="text" name="keyword" th:value="${searchKeyword}" placeholder="Search events..." />
-        <button type="submit">Search</button>
-      </form>
+    <div class="container">
+      <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <div class="search">
+            <i class="fa fa-search"></i>
+            <form th:action="@{/showEvents}" method="get">
+              <input type="hidden" name="tag" th:value="${selectedTag}" />
+              <input type="text" class="form-control" name="keyword" th:value="${searchKeyword}" placeholder="Search events...">
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+
 
     <div class ="event-board">
       <div class="event-container" th:each="event : ${events}">

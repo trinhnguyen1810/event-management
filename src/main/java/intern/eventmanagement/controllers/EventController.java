@@ -28,7 +28,7 @@ public class EventController {
         mav.addObject("pastStatus", Event.EventStatus.PAST);
         List<Event> eventList;
 
-        if (keyword != null && !keyword.isEmpty()) {
+        if (keyword != null ) {
             eventList = eventService.searchEvents(keyword);
         } else {
             if ("upcoming".equals(tag)) {
@@ -109,7 +109,7 @@ public class EventController {
         return  "list-events";
     }
 
-    /*@GetMapping("/searchEvents")
+    /*@GetMapping("/search")
     public ModelAndView searchEvents(@RequestParam String keyword) {
         List<Event> matchingEvents = eventService.searchEvents(keyword);
 
